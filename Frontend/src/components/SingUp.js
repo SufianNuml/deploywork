@@ -7,12 +7,13 @@ export default function SingUp() {
     const [name,setName]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    axios.defaults.withCredentials = true;
     const navigate=useNavigate();
     const getData=(e)=>
     {
         e.preventDefault();
         console.log(name,email,password);
-        axios.post("http://localhost:5000/login",{name,email,password})
+        axios.post("https://deploywork-api.vercel.app/login",{name,email,password})
         .then(result=> {console.log(result)
              navigate("/login")})
         .catch(err => console.log(err))

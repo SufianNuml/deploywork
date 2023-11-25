@@ -1,15 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 export default function Login() {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    axios.defaults.withCredentials = true;
     const navigate=useNavigate();
     const login= async(e)=>
     {
         e.preventDefault();
         console.log(email,password);
-        let result= await fetch("http://localhost:5000/check",{
+        let result= await fetch("https://deploywork-api.vercel.app/check",{
             method:"Post",
             body:JSON.stringify({email,password}),
             headers:{
