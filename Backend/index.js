@@ -5,14 +5,19 @@ const cors=require("cors");
 
 const app=express();
 app.use(express.json());
-app.use(cors(
-    {
+app.use(cors({
+    origin: 'https://deploywork-frontend.vercel.app',
+    // Add any other allowed origins
+  }));
+  
+// app.use(cors(
+//     {
         
-        origin: ["https://deploywork-frontend.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-));
+//         origin: ["https://deploywork-frontend.vercel.app"],
+//         methods: ["POST", "GET"],
+//         credentials: true
+//     }
+// ));
 app.get("/",(req,resp)=>
 {
     resp.json("hello");
