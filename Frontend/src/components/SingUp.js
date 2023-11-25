@@ -9,11 +9,16 @@ export default function SingUp() {
     const [password,setPassword]=useState("");
     axios.defaults.withCredentials = true;
     const navigate=useNavigate();
+    const headers = {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://deploywork-frontend.vercel.app',
+        // Add any other necessary headers here
+    };
     const getData=(e)=>
     {
         e.preventDefault();
         console.log(name,email,password);
-        axios.post("https://deploywork-api.vercel.app/login",{name,email,password})
+        axios.post("https://deploywork-api.vercel.app/login",{name,email,password}, { headers })
         .then(result=> {console.log(result)
              navigate("/login")})
         .catch(err => console.log(err))
